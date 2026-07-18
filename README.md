@@ -131,7 +131,7 @@ flowchart LR
   keys --> cose["COSE_Key (CBOR)"]
   cose --> authdata["authenticatorData"]
   authdata --> att["attestationObject (fmt: none)"]
-  authdata -->|sign authData ‖ SHA-256(clientDataJSON)| sig["assertion signature"]
+  authdata -->|sign authData ‖ SHA-256 of clientDataJSON| sig["assertion signature"]
 ```
 
 Everything downstream of the seed is a pure function of it, which is what makes the output reproducible. The COSE key is encoded in CTAP2 canonical CBOR order so the bytes match what FIDO servers expect.
